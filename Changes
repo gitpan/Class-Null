@@ -1,5 +1,10 @@
 Revision history for Perl extension Class::Null.
 
+1.02  Fri Sep  6 18:58:47 CEST 2002
+	- changed AUTOLOAD to return undef. Up to now it returned the
+	  glob created by *{$AUTOLOAD}, which is not what the called would
+	  expect from sub {}.
+
 1.01  Sun Aug 18 13:52:05 CEST 2002
 	- Class::Null is now a singleton to reduce memory overhead
 	  (thanks nwetters)

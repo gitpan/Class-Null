@@ -1,12 +1,12 @@
 package Class::Null;
 
 use vars '$VERSION';
-$VERSION = '1.01';
+$VERSION = '1.02';
 
 my $singleton;
 
 sub new { $singleton ||= bless {}, shift }
-sub AUTOLOAD { *{$AUTOLOAD} = sub {} }
+sub AUTOLOAD { *{$AUTOLOAD} = sub {}; undef }
 
 1;
 
@@ -156,6 +156,20 @@ other and how they call each other.
 Although C<Class::Null> is exceedingly simple it has been made into a
 distribution and put on CPAN to avoid further clutter and repetitive
 definitions.
+
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
+
+=head1 AVAILABILITY
+
+The latest version of this module is available from the Comprehensive Perl
+Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
+site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
+
+=head1 VERSION
+
+This document describes version 1.02 of C<Class::Null>.
 
 =head1 AUTHOR
 
