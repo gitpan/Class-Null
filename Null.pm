@@ -1,8 +1,12 @@
 package Class::Null;
+
 use vars '$VERSION';
-$VERSION = '1.00';
-sub new { bless {}, shift }
-sub AUTOLOAD {}
+$VERSION = '1.01';
+
+my $singleton;
+
+sub new { $singleton ||= bless {}, shift }
+sub AUTOLOAD { *{$AUTOLOAD} = sub {} }
 
 1;
 
@@ -106,8 +110,8 @@ This object with null functionality is what is called a null object. The
 null class implementation is rather simple:
 
   package Class::Null;
-  sub new { bless {}, shift }
-  sub AUTOLOAD {}
+  sub new { $singleton ||= bless {}, shift }
+  sub AUTOLOAD { *{$AUTOLOAD} = sub {} }
 
 So we can create the object the usual way, using the C<new()>
 constructor, and call any method on it, and all methods will do the same -

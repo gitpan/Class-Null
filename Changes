@@ -1,5 +1,12 @@
 Revision history for Perl extension Class::Null.
 
+1.01  Sun Aug 18 13:52:05 CEST 2002
+	- Class::Null is now a singleton to reduce memory overhead
+	  (thanks nwetters)
+	- Class::Null now creates an empty subroutine when autoloading,
+	  to increase the speed of subsequent calls (they don't have to
+	  go through AUTOLOAD again) (thanks nwetters)
+
 1.00  Sat Aug 17 11:38:47 CEST 2002
 	- changed 'our' to 'use vars' for $VERSION so it runs under
 	  earlier versions of perl (thanks richardc)
