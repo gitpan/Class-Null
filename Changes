@@ -1,0 +1,6 @@
+Revision history for Perl extension Class::Null.
+
+0.01  Fri Aug 16 17:01:00 2002
+	- original version; created by h2xs 1.22 with options
+		-XAn Class::Null
+

@@ -1,0 +1,26 @@
+Class/Null version 0.01
+=======================
+
+This class implements the Null Class design pattern.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module has no dependencies, which is not surprising as it doesn't
+do anything.
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2002 Marcel GrE<uuml>nauer
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself. 
+
