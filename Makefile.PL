@@ -1,8 +1,8 @@
-use ExtUtils::MakeMaker;
-WriteMakefile(
-    'NAME'		=> 'Class::Null',
-    'VERSION_FROM'	=> 'lib/Class/Null.pm',
-    'PREREQ_PM'		=> {
-    	Test::Distribution => 1.02,
-    },
-);
+# This Makefile.PL creates a pass-through Makefile that simply calls
+# the equivalent Module::Build methods for each make target.  See the
+# documentation for Module::Build::Compat for more information.
+
+use 5.008;
+use Module::Build::Compat;
+Module::Build::Compat->run_build_pl(args => \@ARGV);
+Module::Build::Compat->write_makefile;

@@ -1,0 +1,12 @@
+---
+name: Class-Null
+version: 1.03
+author:
+  - Marcel GrE<uuml>nauer, E<lt>marcel@cpan.orgE<gt>
+abstract: Implements the Null Class design pattern
+license: perl
+provides:
+  Class::Null:
+    file: lib/Class/Null.pm
+    version: 1.03
+generated_by: Module::Build version 0.2608

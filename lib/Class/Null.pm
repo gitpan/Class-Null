@@ -1,12 +1,16 @@
 package Class::Null;
 
 use vars '$VERSION';
-$VERSION = '1.02';
+$VERSION = '1.03';
 
 my $singleton;
 
 sub new { $singleton ||= bless {}, shift }
-sub AUTOLOAD { *{$AUTOLOAD} = sub {}; undef }
+sub AUTOLOAD {
+    *{$AUTOLOAD} = sub { Class::Null->new };
+    goto &$AUTOLOAD;
+}
+
 
 1;
 
@@ -106,17 +110,12 @@ is a better way. We could ensure that there is always a log object that
 we can call C<log()> on, even if it doesn't do very much (or in fact,
 anything at all).
 
-This object with null functionality is what is called a null object. The
-null class implementation is rather simple:
-
-  package Class::Null;
-  sub new { $singleton ||= bless {}, shift }
-  sub AUTOLOAD { *{$AUTOLOAD} = sub {} }
-
-So we can create the object the usual way, using the C<new()>
-constructor, and call any method on it, and all methods will do the same -
-nothing. It's effectively a catch-all object. We can use this class with
-our own object like this:
+This object with null functionality is what is called a null object. We can
+create the object the usual way, using the C<new()> constructor, and call any
+method on it, and all methods will do the same - nothing. (Actually, it
+returns another C<Class::Null> object, enabling method chaining.) It's
+effectively a catch-all object. We can use this class with our own object
+like this:
 
   package MyObject;
 
@@ -169,7 +168,7 @@ site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
 
 =head1 VERSION
 
-This document describes version 1.02 of C<Class::Null>.
+This document describes version 1.03 of C<Class::Null>.
 
 =head1 AUTHOR
 
@@ -177,7 +176,7 @@ Marcel GrE<uuml>nauer, E<lt>marcel@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2002 by Marcel GrE<uuml>nauer
+Copyright 2002-2005 by Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

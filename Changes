@@ -1,5 +1,9 @@
 Revision history for Perl extension Class::Null.
 
+1.03  Wed Feb  9 15:26:03 CET 2005
+	- Removed Test::Distribution requirement
+        - Added method chaining
+
 1.02  Fri Sep  6 18:58:47 CEST 2002
 	- changed AUTOLOAD to return undef. Up to now it returned the
 	  glob created by *{$AUTOLOAD}, which is not what the called would
