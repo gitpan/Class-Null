@@ -1,5 +1,11 @@
 Revision history for Perl extension Class::Null.
 
+1.00  Sat Aug 17 11:38:47 CEST 2002
+	- changed 'our' to 'use vars' for $VERSION so it runs under
+	  earlier versions of perl (thanks richardc)
+	- fixed a POD typo
+	- removed the '5.008' requirement from Makefile.PL
+
 0.01  Fri Aug 16 17:01:00 2002
 	- original version; created by h2xs 1.22 with options
 		-XAn Class::Null

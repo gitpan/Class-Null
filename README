@@ -1,4 +1,4 @@
-Class/Null version 0.01
+Class/Null version 1.00
 =======================
 
 This class implements the Null Class design pattern.
@@ -23,4 +23,3 @@ Copyright (C) 2002 Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
-

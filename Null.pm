@@ -1,5 +1,6 @@
 package Class::Null;
-our $VERSION = '0.01';
+use vars '$VERSION';
+$VERSION = '1.00';
 sub new { bless {}, shift }
 sub AUTOLOAD {}
 
@@ -154,7 +155,7 @@ definitions.
 
 =head1 AUTHOR
 
-Marcel GrE<uuml>nauer, E<lt>marcel@cpan.org<gt>
+Marcel GrE<uuml>nauer, E<lt>marcel@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
