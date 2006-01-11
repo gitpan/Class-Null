@@ -1,28 +1,31 @@
 Revision history for Perl extension Class::Null.
 
+1.04  Wed Jan 11 15:44:53 MEZ 2006
+    - Consistency improvements
+
 1.03  Wed Feb  9 15:26:03 CET 2005
-	- Removed Test::Distribution requirement
-        - Added method chaining
+    - Removed Test::Distribution requirement
+    - Added method chaining
 
 1.02  Fri Sep  6 18:58:47 CEST 2002
-	- changed AUTOLOAD to return undef. Up to now it returned the
-	  glob created by *{$AUTOLOAD}, which is not what the called would
-	  expect from sub {}.
+    - changed AUTOLOAD to return undef. Up to now it returned the
+      glob created by *{$AUTOLOAD}, which is not what the called would
+      expect from sub {}.
 
 1.01  Sun Aug 18 13:52:05 CEST 2002
-	- Class::Null is now a singleton to reduce memory overhead
-	  (thanks nwetters)
-	- Class::Null now creates an empty subroutine when autoloading,
-	  to increase the speed of subsequent calls (they don't have to
-	  go through AUTOLOAD again) (thanks nwetters)
+    - Class::Null is now a singleton to reduce memory overhead
+      (thanks nwetters)
+    - Class::Null now creates an empty subroutine when autoloading,
+      to increase the speed of subsequent calls (they don't have to
+      go through AUTOLOAD again) (thanks nwetters)
 
 1.00  Sat Aug 17 11:38:47 CEST 2002
-	- changed 'our' to 'use vars' for $VERSION so it runs under
-	  earlier versions of perl (thanks richardc)
-	- fixed a POD typo
-	- removed the '5.008' requirement from Makefile.PL
+    - changed 'our' to 'use vars' for $VERSION so it runs under
+      earlier versions of perl (thanks richardc)
+    - fixed a POD typo
+    - removed the '5.008' requirement from Makefile.PL
 
 0.01  Fri Aug 16 17:01:00 2002
-	- original version; created by h2xs 1.22 with options
-		-XAn Class::Null
+    - original version; created by h2xs 1.22 with options
+        -XAn Class::Null
 

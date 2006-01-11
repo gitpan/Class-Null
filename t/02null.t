@@ -23,4 +23,3 @@ for (1..10) {
     is($o->$method->$method, Class::Null->new,
        "$method() method chaining ok");
 }
-

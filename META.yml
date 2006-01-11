@@ -1,12 +1,15 @@
 ---
 name: Class-Null
-version: 1.03
+version: 1.04
 author:
-  - Marcel GrE<uuml>nauer, E<lt>marcel@cpan.orgE<gt>
+  - Marcel Gruenauer <marcel@noug.at>
 abstract: Implements the Null Class design pattern
 license: perl
+build_requires:
+  Test::Pod: 1.20
+  Test::Pod::Coverage: 1.06
 provides:
   Class::Null:
     file: lib/Class/Null.pm
-    version: 1.03
-generated_by: Module::Build version 0.2608
+    version: 1.04
+generated_by: Module::Build version 0.2611

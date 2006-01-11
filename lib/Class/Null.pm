@@ -1,7 +1,7 @@
 package Class::Null;
 
 use vars '$VERSION';
-$VERSION = '1.03';
+$VERSION = '1.04';
 
 my $singleton;
 
@@ -20,13 +20,17 @@ __END__
 
 Class::Null - Implements the Null Class design pattern
 
+=head1 VERSION
+
+This document describes version 1.04 of C<Class::Null>.
+    
 =head1 SYNOPSIS
 
   use Class::Null;
-  use Class::MethodMaker
+  use Class::MethodMaker::Util
     new_with_init => 'new',
     new_hash_init => 'new_hash',
-    get_set       => 'log';
+    get_set_std   => 'log';
 
   sub init {
     my $self = shift;
@@ -53,9 +57,9 @@ can be accessed using an accessor method:
 
   package MyObject;
 
-  use Class::MethodMaker
+  use Class::MethodMaker::Util
     new_hash_init => 'new',
-    get_set       => 'log';
+    get_set_std   => 'log';
 
   sub do_it {
     my $self = shift;
@@ -120,10 +124,10 @@ like this:
   package MyObject;
 
   use Class::Null;
-  use Class::MethodMaker
+  use Class::MethodMaker::Util
     new_with_init => 'new',
     new_hash_init => 'new_hash',
-    get_set       => 'log';
+    get_set_std   => 'log';
 
   sub init {
     my $self = shift;
@@ -141,7 +145,7 @@ like this:
   }
 
 Note that we define two constructors (C<new()> and C<new_hash()>) since
-C<Class::MethodMaker>'s C<new_hash_init> option doesn't let us define an
+C<Class::MethodMaker::Util>'s C<new_hash_init> option doesn't let us define an
 object initialization method, whereas C<new_with_init> doesn't process
 named arguments. So we define both and call the constructor that processes
 named arguments from our C<init()> method.
@@ -156,6 +160,36 @@ Although C<Class::Null> is exceedingly simple it has been made into a
 distribution and put on CPAN to avoid further clutter and repetitive
 definitions.
 
+=head1 METHODS
+
+=over 4
+
+=item new()
+
+Returns the singleton null object.
+
+=item any other method
+
+Returns another singleton null object so method chaining works.
+
+=back
+
+=head1 DIAGNOSTICS
+
+There are no diagnostics for this module.
+
+=head1 INCOMPATIBILITIES
+
+None reported.
+
+=head1 BUGS AND LIMITATIONS
+
+No bugs have been reported.
+
+Please report any bugs or feature requests to
+C<bug-class-null@rt.cpan.org>, or through the web interface at
+L<http://rt.cpan.org>.
+
 =head1 INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
@@ -166,19 +200,39 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
 site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
 
-=head1 VERSION
-
-This document describes version 1.03 of C<Class::Null>.
-
 =head1 AUTHOR
 
-Marcel GrE<uuml>nauer, E<lt>marcel@cpan.orgE<gt>
+Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2002-2005 by Marcel GrE<uuml>nauer
+Copyright 2004-2005 by Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself. 
+it under the same terms as Perl itself.
+
+=head1 DISCLAIMER OF WARRANTY
+
+BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
+OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
+PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
+ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
+YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
+NECESSARY SERVICING, REPAIR, OR CORRECTION.
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE
+LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL,
+OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
+THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
+FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
+SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGES.
 
 =cut
+

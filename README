@@ -1,12 +1,15 @@
 NAME
     Class::Null - Implements the Null Class design pattern
 
+VERSION
+    This document describes version 1.04 of "Class::Null".
+
 SYNOPSIS
       use Class::Null;
-      use Class::MethodMaker
+      use Class::MethodMaker::Util
         new_with_init => 'new',
         new_hash_init => 'new_hash',
-        get_set       => 'log';
+        get_set_std   => 'log';
 
       sub init {
         my $self = shift;
@@ -32,9 +35,9 @@ DESCRIPTION
 
       package MyObject;
 
-      use Class::MethodMaker
+      use Class::MethodMaker::Util
         new_hash_init => 'new',
-        get_set       => 'log';
+        get_set_std   => 'log';
 
       sub do_it {
         my $self = shift;
@@ -99,10 +102,10 @@ DESCRIPTION
       package MyObject;
 
       use Class::Null;
-      use Class::MethodMaker
+      use Class::MethodMaker::Util
         new_with_init => 'new',
         new_hash_init => 'new_hash',
-        get_set       => 'log';
+        get_set_std   => 'log';
 
       sub init {
         my $self = shift;
@@ -120,9 +123,9 @@ DESCRIPTION
       }
 
     Note that we define two constructors ("new()" and "new_hash()") since
-    "Class::MethodMaker"'s "new_hash_init" option doesn't let us define an
-    object initialization method, whereas "new_with_init" doesn't process
-    named arguments. So we define both and call the constructor that
+    "Class::MethodMaker::Util"'s "new_hash_init" option doesn't let us
+    define an object initialization method, whereas "new_with_init" doesn't
+    process named arguments. So we define both and call the constructor that
     processes named arguments from our "init()" method.
 
     This is only one example of using a null class, but it can be used
@@ -135,6 +138,26 @@ DESCRIPTION
     distribution and put on CPAN to avoid further clutter and repetitive
     definitions.
 
+METHODS
+    new()
+        Returns the singleton null object.
+
+    any other method
+        Returns another singleton null object so method chaining works.
+
+DIAGNOSTICS
+    There are no diagnostics for this module.
+
+INCOMPATIBILITIES
+    None reported.
+
+BUGS AND LIMITATIONS
+    No bugs have been reported.
+
+    Please report any bugs or feature requests to
+    "bug-class-null@rt.cpan.org", or through the web interface at
+    <http://rt.cpan.org>.
+
 INSTALLATION
     See perlmodinstall for information and options on installing Perl
     modules.
@@ -145,15 +168,34 @@ AVAILABILITY
     CPAN site near you. Or see
     <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
 
-VERSION
-    This document describes version 1.03 of "Class::Null".
-
 AUTHOR
-    Marcel Grünauer, <marcel@cpan.org>
+    Marcel Grünauer, "<marcel@cpan.org>"
 
 COPYRIGHT AND LICENSE
-    Copyright 2002-2005 by Marcel Grünauer
+    Copyright 2004-2005 by Marcel Grünauer
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.
+
+DISCLAIMER OF WARRANTY
+    BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
+    FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
+    OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
+    PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+    EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
+    ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
+    YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
+    NECESSARY SERVICING, REPAIR, OR CORRECTION.
+
+    IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+    WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
+    REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE LIABLE
+    TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL, OR
+    CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE
+    SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
+    RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
+    FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
+    SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH
+    DAMAGES.
 
