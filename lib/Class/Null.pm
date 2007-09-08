@@ -1,15 +1,20 @@
 package Class::Null;
 
-use vars '$VERSION';
-$VERSION = '1.04';
+use warnings;
+use strict;
+
+our $VERSION = '1.05';
+
+use overload
+    'bool'   => sub { 0 },
+    '""'     => sub { '' },
+    '0+'     => sub { 0 },
+    fallback => 1;
 
 my $singleton;
 
 sub new { $singleton ||= bless {}, shift }
-sub AUTOLOAD {
-    *{$AUTOLOAD} = sub { Class::Null->new };
-    goto &$AUTOLOAD;
-}
+sub AUTOLOAD { $singleton }
 
 
 1;
@@ -20,22 +25,17 @@ __END__
 
 Class::Null - Implements the Null Class design pattern
 
-=head1 VERSION
-
-This document describes version 1.04 of C<Class::Null>.
-    
 =head1 SYNOPSIS
 
   use Class::Null;
-  use Class::MethodMaker::Util
-    new_with_init => 'new',
-    new_hash_init => 'new_hash',
-    get_set_std   => 'log';
+
+  # some class constructor and accessor declaration here
 
   sub init {
     my $self = shift;
+    ...
     $self->log(Class::Null->new);
-    $self->new_hash(@_);
+    ...
   }
 
   sub do_it {
@@ -57,9 +57,10 @@ can be accessed using an accessor method:
 
   package MyObject;
 
-  use Class::MethodMaker::Util
-    new_hash_init => 'new',
-    get_set_std   => 'log';
+  use Class::MethodMaker
+    [ new    => [ qw/-hash new/ ],
+      scalar => 'log',
+    ];
 
   sub do_it {
     my $self = shift;
@@ -110,29 +111,28 @@ C<log()> method. This leads to lots of unwieldy code like
 
 The proliferation of if-statements really distracts from the actual call
 to C<log()> and also distracts from the rest of the method code. There
-is a better way. We could ensure that there is always a log object that
-we can call C<log()> on, even if it doesn't do very much (or in fact,
-anything at all).
+is a better way. We can ensure that there is always a log object that we can
+call C<log()> on, even if it doesn't do very much (or in fact, anything at
+all).
 
 This object with null functionality is what is called a null object. We can
 create the object the usual way, using the C<new()> constructor, and call any
 method on it, and all methods will do the same - nothing. (Actually, it
-returns another C<Class::Null> object, enabling method chaining.) It's
-effectively a catch-all object. We can use this class with our own object
-like this:
+always returns the same C<Class::Null> singleton object, enabling method
+chaining.) It's effectively a catch-all object. We can use this class with our
+own object like this:
 
   package MyObject;
 
   use Class::Null;
-  use Class::MethodMaker::Util
-    new_with_init => 'new',
-    new_hash_init => 'new_hash',
-    get_set_std   => 'log';
+
+  # some class constructor and accessor declaration here
 
   sub init {
     my $self = shift;
+    ...
     $self->log(Class::Null->new);
-    $self->new_hash(@_);
+    ...
   }
 
   sub do_it {
@@ -144,17 +144,11 @@ like this:
     $self->log->log(level => 'debug', message => 'finished doing it');
   }
 
-Note that we define two constructors (C<new()> and C<new_hash()>) since
-C<Class::MethodMaker::Util>'s C<new_hash_init> option doesn't let us define an
-object initialization method, whereas C<new_with_init> doesn't process
-named arguments. So we define both and call the constructor that processes
-named arguments from our C<init()> method.
-
-This is only one example of using a null class, but it can be used
-whenever you want to make an optional helper object into a mandatory
-helper object, thereby avoiding unnecessarily complicated checks and
-preserving the transparency of how your objects are related to each
-other and how they call each other.
+This is only one example of using a null class, but it can be used whenever
+you want to make an optional helper object into a mandatory helper object,
+thereby avoiding unnecessarily complicated checks and preserving the
+transparency of how your objects are related to each other and how they
+call each other.
 
 Although C<Class::Null> is exceedingly simple it has been made into a
 distribution and put on CPAN to avoid further clutter and repetitive
@@ -174,13 +168,23 @@ Returns another singleton null object so method chaining works.
 
 =back
 
-=head1 DIAGNOSTICS
+=head1 OVERLOADS
 
-There are no diagnostics for this module.
+=over 4
 
-=head1 INCOMPATIBILITIES
+=item Boolean context
 
-None reported.
+In boolean context, a null object always evaluates to false.
+
+=item Numeric context
+
+When used as a number, a null object always evaluates to 0.
+
+=item String context
+
+When stringified, a null object always evaluates to the empty string.
+
+=back
 
 =head1 BUGS AND LIMITATIONS
 
@@ -206,33 +210,10 @@ Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2004-2005 by Marcel GrE<uuml>nauer
+Copyright 2004-2007 by Marcel GrE<uuml>nauer
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
-=head1 DISCLAIMER OF WARRANTY
-
-BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
-FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
-OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
-PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
-EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
-ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
-YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
-NECESSARY SERVICING, REPAIR, OR CORRECTION.
-
-IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
-REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE
-LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL,
-OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
-THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
-RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
-FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
-SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
-SUCH DAMAGES.
 
 =cut
 
