@@ -3,7 +3,7 @@ package Class::Null;
 use warnings;
 use strict;
 
-our $VERSION = '1.05';
+our $VERSION = '1.06';
 
 use overload
     'bool'   => sub { 0 },
@@ -11,10 +11,8 @@ use overload
     '0+'     => sub { 0 },
     fallback => 1;
 
-my $singleton;
-
-sub new { $singleton ||= bless {}, shift }
-sub AUTOLOAD { $singleton }
+sub new { our $singleton ||= bless {}, shift }
+sub AUTOLOAD { our $singleton }
 
 
 1;

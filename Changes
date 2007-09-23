@@ -1,5 +1,8 @@
 Revision history for Perl extension Class::Null.
 
+1.06  So Sep 23 10:03:20 CEST 2007
+        - now uses Module::Install::StandardTests
+
 1.05  Sa Sep  8 09:38:55 CEST 2007
         - fixed the documentation
         - use warnings; use strict;
