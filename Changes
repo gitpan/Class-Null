@@ -1,5 +1,8 @@
 Revision history for Perl extension Class::Null.
 
+1.07  Do Okt 18 10:09:39 CEST 2007
+        - fixed version requirement of Test::More
+
 1.06  So Sep 23 10:03:20 CEST 2007
         - now uses Module::Install::StandardTests
 

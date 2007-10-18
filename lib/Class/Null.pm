@@ -3,7 +3,7 @@ package Class::Null;
 use warnings;
 use strict;
 
-our $VERSION = '1.06';
+our $VERSION = '1.07';
 
 use overload
     'bool'   => sub { 0 },
@@ -55,10 +55,8 @@ can be accessed using an accessor method:
 
   package MyObject;
 
-  use Class::MethodMaker
-    [ new    => [ qw/-hash new/ ],
-      scalar => 'log',
-    ];
+  use base 'Class::Accessor';
+  MyObject->mk_accessors(qw(log));
 
   sub do_it {
     my $self = shift;
@@ -183,6 +181,11 @@ When used as a number, a null object always evaluates to 0.
 When stringified, a null object always evaluates to the empty string.
 
 =back
+
+=head1 TAGS
+
+If you talk about this module in blogs, on del.icio.us or anywhere else,
+please use the C<classnull> tag.
 
 =head1 BUGS AND LIMITATIONS
 
