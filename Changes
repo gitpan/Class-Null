@@ -1,5 +1,8 @@
 Revision history for Perl extension Class::Null.
 
+1.08  Sa Okt 20 22:19:07 CEST 2007
+        - simplified accessor declaration in documentation
+
 1.07  Do Okt 18 10:09:39 CEST 2007
         - fixed version requirement of Test::More
 

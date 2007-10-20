@@ -3,7 +3,7 @@ package Class::Null;
 use warnings;
 use strict;
 
-our $VERSION = '1.07';
+our $VERSION = '1.08';
 
 use overload
     'bool'   => sub { 0 },
@@ -56,7 +56,7 @@ can be accessed using an accessor method:
   package MyObject;
 
   use base 'Class::Accessor';
-  MyObject->mk_accessors(qw(log));
+  __PACKAGE__->mk_accessors(qw(log));
 
   sub do_it {
     my $self = shift;
