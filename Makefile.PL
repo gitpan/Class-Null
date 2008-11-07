@@ -5,16 +5,12 @@ name 'Class-Null';
 all_from 'lib/Class/Null.pm';
 perl_version '5.006';
 
-build_requires 'Test::More' => '0.70';
+recommends 'Test::Pod';
+recommends 'Test::Pod::Coverage';
 
-process_templates(
-    first_year => 2005,
-    rest_from  => "$ENV{HOME}/.mitlib/standard_pod",
-    start_tag  => '{%',
-    end_tag    => '%}',
-);
+test_requires 'Test::More' => '0.70';
+test_requires 'Test::Compile';
 
-use_standard_tests;
 auto_install;
 auto_include;
 WriteAll;

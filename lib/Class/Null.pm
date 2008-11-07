@@ -3,7 +3,7 @@ package Class::Null;
 use warnings;
 use strict;
 
-our $VERSION = '1.09';
+our $VERSION = '1.10';
 
 use overload
     'bool'   => sub { 0 },
@@ -11,7 +11,15 @@ use overload
     '0+'     => sub { 0 },
     fallback => 1;
 
-sub new { our $singleton ||= bless {}, shift }
+sub new {
+    # the following simple line doesn't work... :(
+    # our $singleton ||= bless {}, shift
+
+    our $singleton;
+    return $singleton if defined $singleton;
+    $singleton = bless {}, shift
+}
+
 sub AUTOLOAD { our $singleton }
 
 
@@ -184,21 +192,11 @@ When stringified, a null object always evaluates to the empty string.
 
 =back
 
-=head1 TAGS
-
-If you talk about this module in blogs, on del.icio.us or anywhere else,
-please use the C<classnull> tag.
-
-=head1 VERSION 
-                   
-This document describes version 1.09 of L<Class::Null>.
-
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
-Please report any bugs or feature requests to
-C<<bug-class-null@rt.cpan.org>>, or through the web interface at
+Please report any bugs or feature requests through the web interface at
 L<http://rt.cpan.org>.
 
 =head1 INSTALLATION
@@ -211,13 +209,13 @@ The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
 site near you. Or see <http://www.perl.com/CPAN/authors/id/M/MA/MARCEL/>.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2005-2007 by Marcel GrE<uuml>nauer
+Copyright 2005-2008 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
