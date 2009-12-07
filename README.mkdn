@@ -1,23 +1,8 @@
-package Class::Null;
-use 5.006;
-use warnings;
-use strict;
-our $VERSION = '1.11';
-use overload
-  'bool'   => sub { 0 },
-  '""'     => sub { '' },
-  '0+'     => sub { 0 },
-  fallback => 1;
-our $null = bless {}, __PACKAGE__;
-sub AUTOLOAD { $null }
-1;
-__END__
-
-=head1 NAME
+# NAME
 
 Class::Null - Implements the Null Class design pattern
 
-=head1 SYNOPSIS
+# SYNOPSIS
 
   use Class::Null;
 
@@ -39,7 +24,7 @@ Class::Null - Implements the Null Class design pattern
     $self->log->log(level => 'debug', message => 'finished doing it');
   }
 
-=head1 DESCRIPTION
+# DESCRIPTION
 
 This class implements the Null Class design pattern.
 
@@ -61,9 +46,9 @@ can be accessed using an accessor method:
     $self->log->log(level => 'debug', message => 'finished doing it');
   }
 
-The log object simply needs to have a C<log()> method that accepts
+The log object simply needs to have a `log()` method that accepts
 two named parameters. Any class defining such a method will do, and
-C<Log::Dispatch> fulfills that requirement while providing a lot of
+`Log::Dispatch` fulfills that requirement while providing a lot of
 flexibility and reusability in handling the logged messages.
 
 You might want to log messages to a file:
@@ -82,7 +67,7 @@ You might want to log messages to a file:
 
 But what happens if we don't define a log object? Your object's methods
 would have to check whether a log object is defined before calling the
-C<log()> method. This leads to lots of unwieldy code like
+`log()` method. This leads to lots of unwieldy code like
 
   sub do_it {
     my $self = shift;
@@ -100,15 +85,15 @@ C<log()> method. This leads to lots of unwieldy code like
   }
 
 The proliferation of if-statements really distracts from the actual call
-to C<log()> and also distracts from the rest of the method code. There
+to `log()` and also distracts from the rest of the method code. There
 is a better way. We can ensure that there is always a log object that we can
-call C<log()> on, even if it doesn't do very much (or in fact, anything at
+call `log()` on, even if it doesn't do very much (or in fact, anything at
 all).
 
 This object with null functionality is what is called a null object. We can
-create the object the usual way, using the C<new()> constructor, and call any
+create the object the usual way, using the `new()` constructor, and call any
 method on it, and all methods will do the same - nothing. (Actually, it
-always returns the same C<Class::Null> singleton object, enabling method
+always returns the same `Class::Null` singleton object, enabling method
 chaining.) It's effectively a catch-all object. We can use this class with our
 own object like this:
 
@@ -140,68 +125,58 @@ thereby avoiding unnecessarily complicated checks and preserving the
 transparency of how your objects are related to each other and how they
 call each other.
 
-Although C<Class::Null> is exceedingly simple it has been made into a
+Although `Class::Null` is exceedingly simple it has been made into a
 distribution and put on CPAN to avoid further clutter and repetitive
 definitions.
 
-=head1 METHODS
+# METHODS
 
-=over 4
-
-=item C<new()>
+- `new()`
 
 Returns the singleton null object.
 
-=item C<any other method>
+- `any other method`
 
 Returns another singleton null object so method chaining works.
 
-=back
+# OVERLOADS
 
-=head1 OVERLOADS
-
-=over 4
-
-=item Boolean context
+- Boolean context
 
 In boolean context, a null object always evaluates to false.
 
-=item Numeric context
+- Numeric context
 
 When used as a number, a null object always evaluates to 0.
 
-=item String context
+- String context
 
 When stringified, a null object always evaluates to the empty string.
 
-=back
-
-=head1 BUGS AND LIMITATIONS
+# BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
+<http://rt.cpan.org>.
 
-=head1 INSTALLATION
+# INSTALLATION
 
 See perlmodinstall for information and options on installing Perl modules.
 
-=head1 AVAILABILITY
+# AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see L<http://search.cpan.org/dist/Class-Null/>.
+site near you. Or see <http://search.cpan.org/dist/Class-Null/>.
 
-=head1 AUTHORS
+# AUTHORS
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+Marcel Gr&uuml;nauer, `<marcel@cpan.org>`
 
-=head1 COPYRIGHT AND LICENSE
+# COPYRIGHT AND LICENSE
 
 Copyright 2005-2009 by the authors.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
-
-=cut

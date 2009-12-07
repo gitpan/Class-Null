@@ -3,10 +3,12 @@ abstract: 'Implements the Null Class design pattern'
 author:
   - 'Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>'
 build_requires:
-  Test::Compile: 0
+  ExtUtils::MakeMaker: 6.42
   Test::More: 0.70
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.77'
+generated_by: 'Module::Install version 0.91'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -16,11 +18,12 @@ no_index:
   directory:
     - inc
     - t
-recommends:
-  Test::Pod: 0
-  Test::Pod::Coverage: 0
+    - xt
 requires:
   perl: 5.6.0
 resources:
+  bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Null
+  homepage: http://search.cpan.org/dist/Class-Null/
   license: http://dev.perl.org/licenses/
-version: 1.10
+  repository: git://github.com/hanekomu/class-null.git
+version: 1.11
