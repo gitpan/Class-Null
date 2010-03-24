@@ -1,5 +1,8 @@
 Revision history for Perl extension Class-Null
 
+2.100830  2010-03-24 11:44:23 Europe/Vienna
+    - converted the distribution to Dist::Zilla-style
+
 1.11  Mon 2009.12.07 22:18:14 CET (Marcel Gruenauer <marcel@cpan.org>)
      - reduced dependencies using author tests
      - better dist engineering (INSTALL, README, README.mkdn etc.)

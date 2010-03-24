@@ -1,9 +1,10 @@
-This is the Perl module Class::Null.
+
+This is the Perl distribution Class-Null.
 
 ## Installation
 
-Class::Null installation is straightforward. If your CPAN shell is set up,
-you should just be able to do
+Class-Null installation is straightforward.
+If your CPAN shell is set up, you should just be able to do
 
     % cpan Class::Null
 
@@ -18,10 +19,9 @@ Then install it:
 
 ## Documentation
 
-Class::Null documentation is available as in POD. So you can do:
+Class-Null documentation is available as in POD.
+So you can do:
 
     % perldoc Class::Null
 
-to read the documentation online with your favorite pager.
-
-Marcel Gruenauer
+to read the documentation with your favorite pager.

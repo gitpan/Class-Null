@@ -1,6 +1,9 @@
 NAME
     Class::Null - Implements the Null Class design pattern
 
+VERSION
+    version 2.100830
+
 SYNOPSIS
       use Class::Null;
 
@@ -127,11 +130,11 @@ DESCRIPTION
     definitions.
 
 METHODS
-    "new()"
-        Returns the singleton null object.
+  new
+    Returns the singleton null object.
 
-    "any other method"
-        Returns another singleton null object so method chaining works.
+  Any other method
+    Returns another singleton null object so method chaining works.
 
 OVERLOADS
     Boolean context
@@ -144,27 +147,32 @@ OVERLOADS
         When stringified, a null object always evaluates to the empty
         string.
 
-BUGS AND LIMITATIONS
-    No bugs have been reported.
-
-    Please report any bugs or feature requests through the web interface at
-    <http://rt.cpan.org>.
-
 INSTALLATION
     See perlmodinstall for information and options on installing Perl
     modules.
 
+BUGS AND LIMITATIONS
+    No bugs have been reported.
+
+    Please report any bugs or feature requests through the web interface at
+    <http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Null>.
+
 AVAILABILITY
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
-    CPAN site near you. Or see <http://search.cpan.org/dist/Class-Null/>.
+    CPAN site near you, or see <http://search.cpan.org/dist/Class-Null/>.
 
-AUTHORS
-    Marcel Grünauer, "<marcel@cpan.org>"
+    The development version lives at
+    <http://github.com/hanekomu/Class-Null/>. Instead of sending patches,
+    please fork this project using the standard git and github
+    infrastructure.
+
+AUTHOR
+      Marcel Gruenauer <marcel@cpan.org>
 
 COPYRIGHT AND LICENSE
-    Copyright 2005-2009 by the authors.
+    This software is copyright (c) 2005 by Marcel Gruenauer.
 
-    This library is free software; you can redistribute it and/or modify it
-    under the same terms as Perl itself.
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 

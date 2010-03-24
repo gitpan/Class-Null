@@ -1,8 +1,10 @@
-package Class::Null;
-use 5.006;
-use warnings;
+use 5.008;
 use strict;
-our $VERSION = '1.11';
+use warnings;
+
+package Class::Null;
+our $VERSION = '2.100830';
+# ABSTRACT: Implements the Null Class design pattern
 use overload
   'bool'   => sub { 0 },
   '""'     => sub { '' },
@@ -11,11 +13,18 @@ use overload
 our $null = bless {}, __PACKAGE__;
 sub AUTOLOAD { $null }
 1;
+
+
 __END__
+=pod
 
 =head1 NAME
 
 Class::Null - Implements the Null Class design pattern
+
+=head1 VERSION
+
+version 2.100830
 
 =head1 SYNOPSIS
 
@@ -146,17 +155,13 @@ definitions.
 
 =head1 METHODS
 
-=over 4
-
-=item C<new()>
+=head2 new
 
 Returns the singleton null object.
 
-=item C<any other method>
+=head2 Any other method
 
 Returns another singleton null object so method chaining works.
-
-=back
 
 =head1 OVERLOADS
 
@@ -176,32 +181,39 @@ When stringified, a null object always evaluates to the empty string.
 
 =back
 
+=head1 INSTALLATION
+
+See perlmodinstall for information and options on installing Perl modules.
+
 =head1 BUGS AND LIMITATIONS
 
 No bugs have been reported.
 
 Please report any bugs or feature requests through the web interface at
-L<http://rt.cpan.org>.
-
-=head1 INSTALLATION
-
-See perlmodinstall for information and options on installing Perl modules.
+L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Null>.
 
 =head1 AVAILABILITY
 
 The latest version of this module is available from the Comprehensive Perl
-Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a CPAN
-site near you. Or see L<http://search.cpan.org/dist/Class-Null/>.
+Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
+site near you, or see
+L<http://search.cpan.org/dist/Class-Null/>.
 
-=head1 AUTHORS
+The development version lives at
+L<http://github.com/hanekomu/Class-Null/>.
+Instead of sending patches, please fork this project using the standard git
+and github infrastructure.
 
-Marcel GrE<uuml>nauer, C<< <marcel@cpan.org> >>
+=head1 AUTHOR
+
+  Marcel Gruenauer <marcel@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2005-2009 by the authors.
+This software is copyright (c) 2005 by Marcel Gruenauer.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
