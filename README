@@ -2,7 +2,7 @@ NAME
     Class::Null - Implements the Null Class design pattern
 
 VERSION
-    version 2.100830
+    version 2.101420
 
 SYNOPSIS
       use Class::Null;

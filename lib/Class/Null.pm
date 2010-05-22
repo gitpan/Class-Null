@@ -3,7 +3,9 @@ use strict;
 use warnings;
 
 package Class::Null;
-our $VERSION = '2.100830';
+BEGIN {
+  $Class::Null::VERSION = '2.101420';
+}
 # ABSTRACT: Implements the Null Class design pattern
 use overload
   'bool'   => sub { 0 },
@@ -24,7 +26,7 @@ Class::Null - Implements the Null Class design pattern
 
 =head1 VERSION
 
-version 2.100830
+version 2.101420
 
 =head1 SYNOPSIS
 

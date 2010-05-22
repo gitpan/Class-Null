@@ -33,5 +33,5 @@ for my $o (Class::Null->new, Class::Null::SubClass->new) {
 isa_ok(Class::Null::whatever(), 'Class::Null', 'Regular function call');
 
 package Class::Null::SubClass;
-use base 'Class::Null';
+use parent 'Class::Null';
 1;
