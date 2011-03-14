@@ -4,7 +4,7 @@ use warnings;
 
 package Class::Null;
 BEGIN {
-  $Class::Null::VERSION = '2.101420';
+  $Class::Null::VERSION = '2.110730';
 }
 # ABSTRACT: Implements the Null Class design pattern
 use overload
@@ -26,7 +26,7 @@ Class::Null - Implements the Null Class design pattern
 
 =head1 VERSION
 
-version 2.101420
+version 2.110730
 
 =head1 SYNOPSIS
 
@@ -198,17 +198,16 @@ L<http://rt.cpan.org/Public/Dist/Display.html?Name=Class-Null>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
-site near you, or see
-L<http://search.cpan.org/dist/Class-Null/>.
+site near you, or see L<http://search.cpan.org/dist/Class-Null/>.
 
-The development version lives at
-L<http://github.com/hanekomu/Class-Null/>.
-Instead of sending patches, please fork this project using the standard git
-and github infrastructure.
+The development version lives at L<http://github.com/hanekomu/Class-Null>
+and may be cloned from L<git://github.com/hanekomu/Class-Null.git>.
+Instead of sending patches, please fork this project using the standard
+git and github infrastructure.
 
 =head1 AUTHOR
 
-  Marcel Gruenauer <marcel@cpan.org>
+Marcel Gruenauer <marcel@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

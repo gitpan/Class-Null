@@ -2,7 +2,7 @@ NAME
     Class::Null - Implements the Null Class design pattern
 
 VERSION
-    version 2.101420
+    version 2.110730
 
 SYNOPSIS
       use Class::Null;
@@ -162,13 +162,13 @@ AVAILABILITY
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
     CPAN site near you, or see <http://search.cpan.org/dist/Class-Null/>.
 
-    The development version lives at
-    <http://github.com/hanekomu/Class-Null/>. Instead of sending patches,
-    please fork this project using the standard git and github
-    infrastructure.
+    The development version lives at <http://github.com/hanekomu/Class-Null>
+    and may be cloned from <git://github.com/hanekomu/Class-Null.git>.
+    Instead of sending patches, please fork this project using the standard
+    git and github infrastructure.
 
 AUTHOR
-      Marcel Gruenauer <marcel@cpan.org>
+    Marcel Gruenauer <marcel@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2005 by Marcel Gruenauer.

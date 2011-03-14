@@ -1,5 +1,9 @@
 Revision history for Perl extension Class-Null
 
+2.110730  2011-03-14 11:39:42 Europe/Vienna
+    - tests use 'base' instead of 'parent' - no need to introduce an
+      extra dependency for 5.8.* users
+
 2.101420  2010-05-22 23:09:16 Europe/Vienna
     - 'use parent' instead of 'use base'
 
